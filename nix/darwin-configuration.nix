@@ -13,6 +13,7 @@
     brews = [
       "gh"
       "jq"
+      "neovim"
     ];
 
     # brew install --cask で入れるアプリケーション（必要に応じて追加）

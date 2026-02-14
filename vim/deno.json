@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "@shougo/dpp-vim": "jsr:@shougo/dpp-vim@~6.0.0",
+    "@shougo/dpp-vim/": "jsr:@shougo/dpp-vim@~6.0.0/",
+    "@shougo/dpp-ext-toml": "jsr:@shougo/dpp-ext-toml@~2.0.0",
+    "@shougo/dpp-ext-lazy": "jsr:@shougo/dpp-ext-lazy@~2.0.0",
+    "@denops/std": "jsr:@denops/std@~8.0.0"
+  }
+}

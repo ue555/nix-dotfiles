@@ -1,0 +1,38 @@
+[[plugins]]
+repo = "nvim-tree/nvim-web-devicons"
+
+[[plugins]]
+repo = "nvim-tree/nvim-tree.lua"
+depends = ['nvim-web-devicons']
+lua_source = '''
+require('tool')
+'''
+
+[[plugins]]
+repo = "nvim-lualine/lualine.nvim"
+depends = ["nvim-web-devicons"]
+
+[[plugins]]
+repo = "hiphish/rainbow-delimiters.nvim"
+
+[[plugins]]
+repo = "nvim-lua/plenary.nvim"
+
+[[plugins]]
+repo = "nvim-telescope/telescope.nvim"
+
+[[plugins]]
+repo = 'github.com/tyru/capture.vim'
+on_cmd = ['Capture']
+
+[[plugins]] # vimdoc-ja
+repo = 'github.com/vim-jp/vimdoc-ja'
+hook_add = 'set helplang=ja,en'
+
+[[plugins]]
+repo = 'MunifTanjim/nui.nvim'
+lua_source = '''
+require('scripts.historylist')
+require('scripts.auto-pairs')
+'''
+

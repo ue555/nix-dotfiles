@@ -12,7 +12,7 @@
   outputs = inputs@{ self, nixpkgs, nix-darwin, ... }:
   let
     # ホスト名を取得するか、デフォルト値を使用
-    hostname = "hero555noMac-mini-3";
+    hostname = "hero555noMacBook-Pro";
   in
   {
     darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {

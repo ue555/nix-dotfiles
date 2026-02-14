@@ -1,0 +1,5 @@
+require("plugins.ddc_rc")
+require("plugins.lsp_rc")
+require("plugins.lspconfig_rc")
+require("plugins.efmls_rc")
+require("plugins.neodev_rc")

@@ -56,6 +56,20 @@ sudo nix run nix-darwin -- switch --flake /Users/kouji/dotfiles/nix#default
 sudo darwin-rebuild switch --flake /Users/kouji/dotfiles/nix#default
 ```
 
+## ホスト名の変更
+
+別のマシンで使う場合は `flake.nix` の `hostname` を変更する。
+
+```nix
+hostname = "hero555noMacBook-Pro";  # ← 自分のマシンのホスト名に変更
+```
+
+ホスト名は以下で確認できる。
+
+```bash
+scutil --get LocalHostName
+```
+
 ## 構成ファイル
 
 | ファイル | 内容 |

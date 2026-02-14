@@ -13,10 +13,12 @@
     brews = [
       "gh"
       "jq"
+      "neovim"
     ];
 
     # brew install --cask で入れるアプリケーション（必要に応じて追加）
     casks = [
+      "copilot-cli"
       # "google-chrome"
       # "visual-studio-code"
     ];

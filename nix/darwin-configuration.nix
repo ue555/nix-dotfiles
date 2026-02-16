@@ -12,6 +12,7 @@
     # brew install で入れるパッケージ
     brews = [
       "gh"
+      "goenv"
       "jq"
       "neovim"
     ];

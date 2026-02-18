@@ -16,9 +16,19 @@ vim.lsp.enable("ts_ls")
 vim.lsp.config("gopls", {})
 vim.lsp.enable("gopls")
 
+-- Terraform Language Server
+local capabilities = require("ddc_source_lsp").make_client_capabilities()
+vim.lsp.config("terraformls", {
+  cmd = { "terraform-ls", "serve" },
+  filetypes = { "terraform", "tf", "tfvars" },
+  root_markers = { ".terraform", ".git" },
+  capabilities = capabilities,
+})
+vim.lsp.enable("terraformls")
+
 vim.lsp.config("efm", {
   init_options = { documentFormatting = true },
-  filetypes = { "go", "lua", "typescript", "javascript", "typescriptreact", "javascriptreact" },
+  filetypes = { "go", "lua", "typescript", "javascript", "typescriptreact", "javascriptreact", "terraform" },
   settings = {
     rootMarkers = { ".git/" },
     languages = {
@@ -39,6 +49,9 @@ vim.lsp.config("efm", {
       },
       go = {
         { formatCommand = "gofmt", formatStdin = true },
+      },
+      terraform = {
+        { formatCommand = "terraform fmt -", formatStdin = true },
       },
     },
   },

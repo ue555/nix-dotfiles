@@ -140,6 +140,18 @@ if executable('efm-langserver')
   augroup END
 endif
 
+if executable('terraform-ls')
+  augroup LspTerraform
+    au!
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'terraform-ls',
+        \ 'cmd': {server_info->['terraform-ls', 'serve']},
+        \ 'allowlist': ['terraform'],
+        \ 'initialization_options': {},
+        \ })
+  augroup END
+endif
+
 function! s:format_on_save() abort
   if &filetype ==# 'go'
     " gofmtコマンドを直接実行
@@ -149,4 +161,4 @@ function! s:format_on_save() abort
   endif
 endfunction
 
-autocmd BufWritePre *.lua,*.ts,*.go call s:format_on_save()
+autocmd BufWritePre *.lua,*.ts,*.go,*.tf call s:format_on_save()

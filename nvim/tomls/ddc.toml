@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'Shougo/ddc.vim'
-on_event = 'InsertEnter'
+on_event = ['InsertEnter', 'CmdlineEnter']
 depends = ['denops.vim']
 lua_source = '''
 require('ddc')
@@ -24,7 +24,9 @@ on_source = 'ddc.vim'
 
 [[plugins]]
 repo = 'neovim/nvim-lspconfig'
-on_event = 'BufEnter'
+lua_source = '''
+require('plugins.lspconfig_rc')
+'''
 
 [[plugins]]
 repo = 'Shougo/ddc-ui-native'

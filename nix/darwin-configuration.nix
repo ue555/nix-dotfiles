@@ -9,10 +9,16 @@
   homebrew = {
     enable = true;
 
+    # brew tap で追加するリポジトリ
+    taps = [
+      "hashicorp/tap"
+    ];
+
     # brew install で入れるパッケージ
     brews = [
       "gh"
       "goenv"
+      "hashicorp/tap/terraform"
       "jq"
       "neovim"
     ];

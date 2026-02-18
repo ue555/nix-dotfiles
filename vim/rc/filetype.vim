@@ -10,4 +10,6 @@ augroup FiletypeByExtension
   autocmd BufRead,BufNewFile *.rs   set filetype=rust
   autocmd BufRead,BufNewFile *.lua  set filetype=lua
   autocmd BufRead,BufNewFile *.vim  set filetype=vim
+  autocmd BufRead,BufNewFile *.tf   set filetype=terraform
+  autocmd BufRead,BufNewFile *.tfvars set filetype=terraform
 augroup END

@@ -34,3 +34,11 @@ end, { desc = "install dpp.nvim plugins" })
 vim.api.nvim_create_user_command("Format", function()
   vim.lsp.buf.format()
 end, {})
+
+-- Auto format on save for specific filetypes
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.lua", "*.go", "*.ts", "*.js", "*.tsx", "*.jsx", "*.tf", "*.tfvars" },
+  callback = function()
+    vim.lsp.buf.format({ async = false })
+  end,
+})

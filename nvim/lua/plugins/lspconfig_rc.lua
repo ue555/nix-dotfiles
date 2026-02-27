@@ -10,10 +10,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+-- 全 LSP クライアントに ddc-source-lsp の capabilities を設定
+vim.lsp.config("*", {
+  capabilities = require("ddc_source_lsp").make_client_capabilities(),
+})
+
 vim.lsp.config("ts_ls", {})
 vim.lsp.enable("ts_ls")
 
-vim.lsp.config("gopls", {})
+vim.lsp.config("gopls", {
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
+  root_markers = { "go.work", "go.mod", ".git" },
+  capabilities = require("ddc_source_lsp").make_client_capabilities(),
+})
 vim.lsp.enable("gopls")
 
 -- Terraform Language Server

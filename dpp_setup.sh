@@ -40,7 +40,14 @@ link_denops_deno_json() {
   local repos_dir="$dpp_cache_dir/repos/github.com"
 
   for vim_type in vim nvim; do
-    local denops_cache="$dpp_cache_dir/$vim_type/.dpp/denops"
+    # dpp stores cache at <base>/<name>/.dpp where name = progname without extension
+    # For nvim: ~/.cache/dpp/nvim/nvim/.dpp, for vim: ~/.cache/dpp/vim/vim/.dpp
+    local denops_cache="$dpp_cache_dir/$vim_type/$vim_type/.dpp/denops"
+
+    # Fallback to old path for compatibility
+    if [ ! -d "$denops_cache" ]; then
+      denops_cache="$dpp_cache_dir/$vim_type/.dpp/denops"
+    fi
 
     if [ ! -d "$denops_cache" ]; then
       continue

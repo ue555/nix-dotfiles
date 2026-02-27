@@ -11,6 +11,7 @@ vim.fn['ddc#custom#patch_global']('sourceOptions', {
   },
   lsp = {
     mark = '[LSP]',
+    isVolatile = true,
     forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
     minAutoCompleteLength = 1,
   },

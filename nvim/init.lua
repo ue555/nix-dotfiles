@@ -2,7 +2,7 @@ local dpp_src = "$HOME/.cache/dpp/repos/github.com/Shougo/dpp.vim"
 
 local dpp_base = vim.fn.expand("$HOME/.cache/dpp/nvim")
 local dpp_config = "~/.config/nvim/dpp.ts"
-local dpp_cache = vim.fn.expand("$HOME/.cache/dpp/nvim/.dpp")
+local dpp_cache = vim.fn.expand("$HOME/.cache/dpp/nvim/nvim/.dpp")
 
 local denops_src = "$HOME/.cache/dpp/repos/github.com/vim-denops/denops.vim"
 

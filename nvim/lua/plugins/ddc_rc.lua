@@ -30,25 +30,28 @@ vim.fn['ddc#custom#patch_global']('sourceParams', {
 vim.fn['ddc#enable']()
 
 -- 補完のキーマッピング
-vim.keymap.set('i', '<C-n>', function()
+-- <C-Space>: 手動で補完トリガー
+vim.keymap.set('i', '<C-Space>', function()
   return vim.fn['ddc#map#manual_complete']()
 end, { expr = true })
 
+-- <Tab>/<S-Tab>: 候補を選択して確定（newlineなし）
 vim.keymap.set('i', '<Tab>', function()
-  if vim.fn['ddc#visible']() then
-    return '<Cmd>call ddc#map#select_next_item()<CR>'
+  if vim.fn.pumvisible() == 1 then
+    return '<C-n>'
   else
     return '<Tab>'
   end
 end, { expr = true })
 
-vim.keymap.set('i', '<S-Tab>', '<Cmd>call ddc#map#select_previous_item()<CR>', { silent = true })
-
-vim.keymap.set('i', '<CR>', function()
-  if vim.fn['ddc#map#can_complete']() then
-    return vim.fn['ddc#map#insert_item'](0)
+vim.keymap.set('i', '<S-Tab>', function()
+  if vim.fn.pumvisible() == 1 then
+    return '<C-p>'
   else
-    return '<CR>'
+    return '<S-Tab>'
   end
 end, { expr = true })
+
+-- <CR>: 常に改行（Tabで確定済みのため）
+vim.keymap.set('i', '<CR>', '<CR>', {})
 

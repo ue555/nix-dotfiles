@@ -45,8 +45,8 @@ end, { expr = true })
 vim.keymap.set('i', '<S-Tab>', '<Cmd>call ddc#map#select_previous_item()<CR>', { silent = true })
 
 vim.keymap.set('i', '<CR>', function()
-  if vim.fn.pumvisible() == 1 then
-    return '<C-y>'
+  if vim.fn['ddc#map#can_complete']() then
+    return vim.fn['ddc#map#insert_item'](0)
   else
     return '<CR>'
   end

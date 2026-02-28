@@ -45,8 +45,8 @@ end, { expr = true })
 vim.keymap.set('i', '<S-Tab>', '<Cmd>call ddc#map#select_previous_item()<CR>', { silent = true })
 
 vim.keymap.set('i', '<CR>', function()
-  if vim.fn['pum#visible']() then
-    return '<Cmd>call pum#map#confirm()<CR>'
+  if vim.fn.pumvisible() == 1 then
+    return '<C-y>'
   else
     return '<CR>'
   end

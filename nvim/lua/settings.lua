@@ -10,3 +10,6 @@ local current_listchars = vim.opt.listchars:get()
 current_listchars.space = "."
 vim.opt.listchars = current_listchars
 vim.opt.list = true
+
+-- カラースキームの設定
+vim.cmd("colorscheme habamax")

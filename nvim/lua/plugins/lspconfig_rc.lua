@@ -37,7 +37,7 @@ vim.lsp.config("terraformls", {
 vim.lsp.enable("terraformls")
 
 vim.lsp.config("efm", {
-  init_options = { documentFormatting = true },
+  init_options = { documentFormatting = true, documentDiagnostics = true },
   filetypes = { "go", "lua", "typescript", "javascript", "typescriptreact", "javascriptreact", "terraform" },
   settings = {
     rootMarkers = { ".git/", "go.mod" },

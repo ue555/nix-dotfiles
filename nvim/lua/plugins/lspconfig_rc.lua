@@ -59,6 +59,7 @@ vim.lsp.config("efm", {
       },
       go = {
         { formatCommand = "gofmt", formatStdin = true },
+        { lintCommand = "golangci-lint run --out-format line-number", lintStdin = false, lintFormats = { "%f:%l:%c: %m" } },
       },
       terraform = {
         { formatCommand = "terraform fmt -", formatStdin = true },

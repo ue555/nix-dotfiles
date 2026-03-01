@@ -59,7 +59,7 @@ vim.lsp.config("efm", {
       },
       go = {
         { formatCommand = "gofmt", formatStdin = true },
-        { lintCommand = "golangci-lint run --output.text.print-issued-lines=false --output.text.colors=false", lintStdin = false, lintFormats = { "%f:%l:%c: %m", "%.%#:%l:%c: %m" } },
+        { lintCommand = "golangci-lint run --output.text.print-issued-lines=false --output.text.colors=false", lintStdin = false, lintWorkspace = true, lintFormats = { "%f:%l:%c: %m", "%.%#:%l:%c: %m" } },
       },
       terraform = {
         { formatCommand = "terraform fmt -", formatStdin = true },

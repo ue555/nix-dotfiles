@@ -42,3 +42,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.lsp.buf.format({ async = false })
   end,
 })
+
+-- 診断エラーの詳細をフローティングウィンドウで表示
+vim.keymap.set("n", "[e", function()
+  vim.diagnostic.open_float(nil, { scope = "line" })
+end, { desc = "Show diagnostic detail" })

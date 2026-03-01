@@ -18,6 +18,7 @@
     brews = [
       "gh"
       "goenv"
+      "golangci-lint"
       "hashicorp/tap/terraform"
       "jq"
       "neovim"

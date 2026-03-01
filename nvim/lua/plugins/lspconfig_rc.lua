@@ -40,7 +40,7 @@ vim.lsp.config("efm", {
   init_options = { documentFormatting = true },
   filetypes = { "go", "lua", "typescript", "javascript", "typescriptreact", "javascriptreact", "terraform" },
   settings = {
-    rootMarkers = { ".git/" },
+    rootMarkers = { ".git/", "go.mod" },
     languages = {
       lua = {
         { formatCommand = "stylua -g '*.lua' -g '!*.spec.lua' -- .", formatStdin = true },
@@ -59,7 +59,7 @@ vim.lsp.config("efm", {
       },
       go = {
         { formatCommand = "gofmt", formatStdin = true },
-        { lintCommand = "golangci-lint run --out-format line-number", lintStdin = false, lintFormats = { "%f:%l:%c: %m" } },
+        { lintCommand = "golangci-lint run --output.text.print-issued-lines=false --output.text.colors=false", lintStdin = false, lintFormats = { "%f:%l:%c: %m", "%.%#:%l:%c: %m" } },
       },
       terraform = {
         { formatCommand = "terraform fmt -", formatStdin = true },

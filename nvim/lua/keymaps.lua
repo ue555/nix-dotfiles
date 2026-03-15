@@ -47,3 +47,33 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.keymap.set("n", "[e", function()
   vim.diagnostic.open_float(nil, { scope = "line" })
 end, { desc = "Show diagnostic detail" })
+
+-- Go ドキュメントをターミナルで表示
+vim.keymap.set("n", "]gd", function()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.api.nvim_win_get_cursor(0)[2] + 1
+
+  -- カーソル位置から pkg.Symbol or symbol を抽出
+  local s, e = col, col
+  while s > 1 and line:sub(s-1, s-1):match("[%w_]") do s = s - 1 end
+  if s > 1 and line:sub(s-1, s-1) == "." then
+    s = s - 1
+    while s > 1 and line:sub(s-1, s-1):match("[%w_]") do s = s - 1 end
+  end
+  while e <= #line and line:sub(e, e):match("[%w_]") do e = e + 1 end
+  if e <= #line and line:sub(e, e) == "." then
+    e = e + 1
+    while e <= #line and line:sub(e, e):match("[%w_]") do e = e + 1 end
+  end
+  local word = line:sub(s, e - 1)
+
+  local builtins = {
+    make=true, len=true, cap=true, append=true, copy=true, delete=true,
+    new=true, panic=true, recover=true, print=true, println=true, close=true,
+    complex=true, real=true, imag=true, clear=true, max=true, min=true,
+  }
+  local target = builtins[word] and ("builtin." .. word) or word
+  local dir = vim.fn.expand("%:p:h")
+  local cmd = string.format("cd %s && go doc %s", vim.fn.shellescape(dir), vim.fn.shellescape(target))
+  vim.cmd("split | terminal " .. cmd)
+end, { desc = "Go doc for word under cursor" })
